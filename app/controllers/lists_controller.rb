@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   def show
     cred_check
-    @items = @list.items.completed
+    @items = @list.items.incomplete
   end
 
   # GET /lists/new
