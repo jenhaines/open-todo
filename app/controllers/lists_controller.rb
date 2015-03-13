@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   def index
     @user = current_user
     if params[:view]=='all'
-      @lists = List.all_available(@user) 
+      @lists = List.all_available
     else
       @lists = @user.lists
     end
@@ -36,7 +36,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_path(@list), notice: 'List was successfully created.'
     else
-      render action: 'new'
+      redirect :back, flash[:error]= 'There was an error saving the list.'
     end
   end
 

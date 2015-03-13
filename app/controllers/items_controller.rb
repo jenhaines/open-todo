@@ -3,12 +3,18 @@ class ItemsController < ApplicationController
   before_action :set_list
 
   def create
-    
-    if @list.add(item_params[:description])
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to list_path(@list), notice: 'Item was successfully created.'
     else
-      render action: 'new'
+      redirect_to :back, notice: "Error creating item. Please try again."
     end
+
+    # if @list.add(item_params[:description])
+    #   redirect_to list_path(@list), notice: 'Item was successfully created.'
+    # else
+    #   render action: 'new'
+    # end
   end
 
   def new

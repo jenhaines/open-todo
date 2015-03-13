@@ -18,7 +18,7 @@
       <tbody>
         <% @lists.each do |list| %>
           <tr>
-            <td><%= list.title %></td>
+            <td><%= link_to list.title, list %></td>
             <td><%= list.permissions %></td>
             <td><%= list.id %></td>
             <td><%= link_to 'Show', list, class: 'btn btn-default btn-sm' %></td>

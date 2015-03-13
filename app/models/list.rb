@@ -6,6 +6,14 @@ class List < ActiveRecord::Base
 
   after_initialize :defaults
 
+  def self.all_available
+    List.where(permissions: ["open", "viewable"])
+  end
+  
+  def self.permission_options
+    %w(private viewable open)
+  end
+
   def defaults
     self.permissions ||= 'private'
   end
